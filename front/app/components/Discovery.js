@@ -5,7 +5,7 @@ import UserView from './UserView';
 import Button from './Button';
 
 // a proxy endpoint
-const endpoint = '/api/profiles';
+//const endpoint = '/api/profiles';
 
 
 export default class Discovery extends Component {
@@ -23,7 +23,7 @@ export default class Discovery extends Component {
 
   componentWillMount() {
     let old = this.props.getOldProfiles();
-    axios.get(endpoint)
+    axios.get('http://localhost:8080/api/profiles')
       .then(res => {
         this.setState({
           profiles:old.concat(res.data)
@@ -43,7 +43,7 @@ export default class Discovery extends Component {
   }
 
   getNewUsers(){
-    axios.get(endpoint)
+    axios.get('http://localhost:8080/api/profiles')
       .then(res => {
         this.setState({
           profiles: this.state.profiles.concat(res.data)
